@@ -1,23 +1,31 @@
 #define N 10
-int array[N] = {10,20,30,45,55,60,75,85,90,15};
+int array[N] = {4,8,12,16,20,24,40,44,48,52};
 
-int mcd(int *a,int size){
- int maxd,r;
 
- for(int i=0;i<size;i++){
-  
+int wmax(int *a ,int nsize){
+   int maxd;
+ for(int i=0;i<nsize;i++){
      if(i==0){
    maxd=a[i];
   }
-  do{
-   r=maxd%a[i];
-   maxd=a[i];
+ }
+ return maxd;
+ }
+
+int mcd(int *a,int size){
+ int max,r;
+ for(int i=0;i<size;i++){
+   wmax(array,size);
+   do{
+   r=max%a[i];
+   max=a[i];
    a[i]=r;
   }while(r!=0);
  }
- return maxd;
+
+  return max;
 }
 int main(){
- mcd(array, N);
+  mcd(array, N);
   return 0;
 }
