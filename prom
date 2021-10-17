@@ -1,29 +1,29 @@
-#include <stdbool.h>
 
-int promedio(int *a, int size)
-{
-    int prom=0;
-    for (int i = 0; i < size; i++){
-    prom=prom+a[i];
-    }
-    prom=prom/size;
-    return prom;
+#include<iostream>
+using namespace std ;
+#define N 10
+int array[N] = {10,20,30,45,55,60,75,85,90,15};
+
+int mcd(int *a,int size){
+ int maxd,r;
+
+ for(int i=0;i<size;i++){
+   cout<<a[i]<<endl;
+     if(i==0){
+   maxd=a[i];
+  }
+  do{
+   r=maxd%a[i];
+   maxd=a[i];
+   a[i]=r;
+  }while(r!=0);
+ }
+ cout<<"El MCD es :"<<maxd;
+
+ 
+ return maxd;
 }
-int the_largest(int *a, int size){
-  int mayor=a[0];
-   for (int i = 0; i < size; i++){
-    if (mayor<a[i]){
-      mayor=a[i];
-   }}
-
-return mayor;
-}
-
-int main()
-{
-    int a[12] = {14,15,16,19,17,17,15,12,13,12,17,15};
-    int y = promedio(a, 12);
-    int z = the_largest(a, 12);
-    bool mayor_is_par = (z%2==0) ? true : false;
-    return 0;
+int main(){
+ mcd(array, N);
+  return 0;
 }
